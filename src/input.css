@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-linen font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-olive text-white;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-moss ring-offset-4 ring-offset-linen;
+  }
+}
+
+@layer components {
+  .container-shell {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-label text-moss;
+  }
+
+  .display-title {
+    @apply font-display text-4xl leading-[1.02] tracking-[-0.03em] text-espresso sm:text-5xl lg:text-6xl;
+  }
+
+  .section-title {
+    @apply font-display text-3xl leading-tight tracking-[-0.02em] text-espresso sm:text-4xl;
+  }
+
+  .btn-primary {
+    @apply inline-flex min-h-12 items-center justify-center rounded-full bg-espresso px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-moss hover:shadow-soft;
+  }
+
+  .btn-secondary {
+    @apply inline-flex min-h-12 items-center justify-center rounded-full border border-espresso/20 bg-white/60 px-6 py-3 text-sm font-semibold text-espresso transition duration-300 hover:-translate-y-0.5 hover:border-espresso/40 hover:bg-white;
+  }
+
+  .text-link {
+    @apply inline-flex items-center gap-2 text-sm font-semibold text-espresso underline decoration-clay underline-offset-4 transition hover:text-moss hover:decoration-moss;
+  }
+
+  .card {
+    @apply rounded-[1.75rem] border border-espresso/10 bg-white/55 shadow-soft backdrop-blur-sm;
+  }
+
+  .placeholder-image {
+    @apply block h-full w-full object-cover transition duration-700 group-hover:scale-[1.025];
+  }
+
+  .field {
+    @apply min-h-12 w-full rounded-2xl border border-espresso/15 bg-white/80 px-4 py-3 text-sm text-ink placeholder:text-taupe/70 transition focus:border-moss focus:ring-2 focus:ring-moss/20;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium text-taupe transition hover:text-espresso;
+  }
+
+  .nav-link[aria-current="page"] {
+    @apply text-espresso underline decoration-clay decoration-2 underline-offset-8;
+  }
+
+  .prose-article h2 {
+    @apply mt-12 font-display text-3xl tracking-[-0.02em] text-espresso;
+  }
+
+  .prose-article h3 {
+    @apply mt-8 font-display text-2xl text-espresso;
+  }
+
+  .prose-article p {
+    @apply mt-5 leading-8 text-taupe;
+  }
+
+  .prose-article ul {
+    @apply mt-5 space-y-3 pl-5 text-taupe;
+  }
+
+  .prose-article li {
+    @apply list-disc pl-2 leading-7;
+  }
+
+  .legal-note {
+    @apply rounded-2xl border border-clay/40 bg-sand/60 p-5 text-sm leading-6 text-taupe;
+  }
+}
+
+@layer utilities {
+  .bg-grain {
+    background-image: radial-gradient(rgba(61, 51, 44, 0.10) 0.7px, transparent 0.7px);
+    background-size: 14px 14px;
+  }
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 700ms ease, transform 700ms ease;
+  }
+
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      scroll-behavior: auto !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+
+    [data-reveal] {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
