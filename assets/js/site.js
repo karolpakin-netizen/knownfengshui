@@ -49,19 +49,62 @@ document.querySelectorAll("[data-faq-button]").forEach((button) => {
   });
 });
 
+// Lemon Squeezy 浮层成功后，定制咨询订单回到联系页提交房间照片。
+document.querySelectorAll("[data-custom-review]").forEach((button) => {
+  button.addEventListener("click", () => {
+    try {
+      window.sessionStorage.setItem("knownfengshui-custom-review", "1");
+    } catch {
+      // 隐私模式禁用 sessionStorage 时，仍允许 Lemon Squeezy 正常结账。
+    }
+  });
+});
+
+let lemonSetupAttempts = 0;
+const setupLemonEvents = () => {
+  if (window.LemonSqueezy?.Setup) {
+    window.LemonSqueezy.Setup({
+      eventHandler: (event) => {
+        if (event?.event !== "Checkout.Success") return;
+        let isCustomReview = false;
+        try {
+          isCustomReview = window.sessionStorage.getItem("knownfengshui-custom-review") === "1";
+          if (isCustomReview) window.sessionStorage.removeItem("knownfengshui-custom-review");
+        } catch {
+          isCustomReview = false;
+        }
+        if (isCustomReview) window.location.href = "/contact.html?custom-review=1";
+      },
+    });
+    return;
+  }
+  if (lemonSetupAttempts < 30) {
+    lemonSetupAttempts += 1;
+    window.setTimeout(setupLemonEvents, 100);
+  }
+};
+setupLemonEvents();
+
 const params = new URLSearchParams(window.location.search);
 if (params.get("sent") === "1") {
   const status = document.querySelector("[data-contact-status]");
   if (status) {
-    status.textContent = "Thank you. Your message has been sent.";
+    status.textContent = "Thanks for reaching out. Your message was sent, and we usually reply within 2–3 business days.";
     status.classList.remove("hidden");
   }
 }
 if (params.get("subscribed") === "1") {
   const status = document.querySelector("[data-subscribe-status]");
   if (status) {
-    status.textContent = "Thank you for joining the Known Feng Shui notes.";
+    status.textContent = "You are subscribed. Your free home-space checklist will arrive by email shortly.";
     status.classList.remove("hidden");
+  }
+}
+if (params.get("custom-review") === "1") {
+  const status = document.querySelector("[data-custom-review-status]");
+  if (status) {
+    status.classList.remove("hidden");
+    status.scrollIntoView({ block: "center", behavior: "smooth" });
   }
 }
 
