@@ -34,12 +34,13 @@ knownfengshui-site/
 
 ## 上线前必须替换
 
-1. 在 `products.html` 和 `product-detail.html` 中，把 `https://gumroad.com/`、`https://www.sendowl.com/` 替换成每个商品的真实结账链接。
-2. 将所有 `https://placehold.co/...` 图片占位链接替换成你拥有使用权的图片。保留原有宽高比例和有意义的 `alt` 文本。
-3. 联系表单和邮件订阅表单目前提交到 `contact@knownfengshui.com`。如使用其他收件邮箱，请在 `index.html` 与 `contact.html` 的 FormSubmit `action` 中同时替换。
-4. 第一次测试提交后，FormSubmit 会向收件邮箱发送激活邮件；完成激活后表单才会正式转发。
-5. `privacy.html` 是启动用隐私声明占位稿。根据经营主体、所在地、邮件服务和实际数据处理方式请专业人士复核。
-6. 产品价格、退款说明和外部平台条款需与 Gumroad / SendOwl 的实际商品设置保持一致。
+1. 在 `products.html` 和 `product-detail.html` 中，把带有 `YOUR-STORE.lemonsqueezy.com` 的占位 href 替换成 Lemon Squeezy 后台复制的真实结账链接。按钮已统一使用 `lemonsqueezy-button`，会在当前页面打开浮层。
+2. 在 Lemon Squeezy 后台为 Custom Room Feng Shui Review Service 设置成功回跳地址 `https://knownfengshui.com/contact.html?custom-review=1`，并选择 Checkout Overlay 分享方式。
+3. 将所有 `https://placehold.co/...` 图片占位链接替换成你拥有使用权的图片。保留原有宽高比例和有意义的 `alt` 文本。
+4. 联系表单和邮件订阅表单目前提交到 `contact@knownfengshui.com`。如使用其他收件邮箱，请在 `index.html` 与 `contact.html` 的 FormSubmit `action` 中同时替换。
+5. 第一次测试提交后，FormSubmit 会向收件邮箱发送激活邮件；完成激活后表单才会正式转发。
+6. `privacy.html` 是启动用隐私声明占位稿。根据经营主体、所在地、邮件服务和实际数据处理方式请专业人士复核。
+7. 产品价格、退款说明和 Lemon Squeezy 的实际商品设置保持一致；数字文件交付后不支持退款的说明需与后台条款一致。
 
 ## 本地开发与构建
 
