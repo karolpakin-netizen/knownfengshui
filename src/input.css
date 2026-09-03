@@ -8,7 +8,7 @@
   }
 
   body {
-    @apply bg-linen font-sans text-ink antialiased;
+    @apply overflow-x-hidden bg-linen font-sans text-ink antialiased;
   }
 
   ::selection {
@@ -38,11 +38,11 @@
   }
 
   .btn-primary {
-    @apply inline-flex min-h-12 items-center justify-center rounded-full bg-espresso px-6 py-3 text-sm font-semibold text-white transition duration-300 hover:-translate-y-0.5 hover:bg-moss hover:shadow-soft;
+    @apply inline-flex min-h-12 items-center justify-center rounded-full bg-espresso px-6 py-3 text-center text-sm font-semibold leading-5 text-white transition duration-300 hover:-translate-y-0.5 hover:bg-moss hover:shadow-soft;
   }
 
   .btn-secondary {
-    @apply inline-flex min-h-12 items-center justify-center rounded-full border border-espresso/20 bg-white/60 px-6 py-3 text-sm font-semibold text-espresso transition duration-300 hover:-translate-y-0.5 hover:border-espresso/40 hover:bg-white;
+    @apply inline-flex min-h-12 items-center justify-center rounded-full border border-espresso/20 bg-white/60 px-6 py-3 text-center text-sm font-semibold leading-5 text-espresso transition duration-300 hover:-translate-y-0.5 hover:border-espresso/40 hover:bg-white;
   }
 
   .text-link {
