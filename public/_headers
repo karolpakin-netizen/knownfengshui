@@ -5,5 +5,14 @@
   X-Frame-Options: DENY
   Content-Security-Policy: default-src 'self'; img-src 'self' https://placehold.co data:; script-src 'self' https://app.lemonsqueezy.com; style-src 'self'; connect-src 'self' https://app.lemonsqueezy.com https://*.lemonsqueezy.com; frame-src 'self' https://app.lemonsqueezy.com https://*.lemonsqueezy.com; form-action 'self' https://formsubmit.co; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests
 
+/assets/images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/assets/css/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+/assets/js/*
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
 /assets/*
   Cache-Control: public, max-age=3600, must-revalidate
