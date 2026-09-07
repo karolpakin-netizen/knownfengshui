@@ -26,4 +26,12 @@ for (const file of readdirSync(projectRoot)) {
 cpSync(join(projectRoot, "assets"), join(distDir, "assets"), { recursive: true });
 if (existsSync(join(projectRoot, "public"))) cpSync(join(projectRoot, "public"), distDir, { recursive: true });
 
+// 中文注释：源 PNG 保留在仓库便于后续编辑，生产包只发布已压缩的 JPEG，减少部署体积。
+const productImageDir = join(distDir, "assets", "images", "products");
+if (existsSync(productImageDir)) {
+  for (const file of readdirSync(productImageDir)) {
+    if (file.endsWith(".png")) rmSync(join(productImageDir, file), { force: true });
+  }
+}
+
 console.log("Static production files are ready in dist/.");
